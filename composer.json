@@ -56,11 +56,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\LaravelDiskMonitor\\LaravelDiskMonitorServiceProvider"
-            ],
-            "aliases": {
-                "LaravelDiskMonitor": "Spatie\\LaravelDiskMonitor\\Facades\\LaravelDiskMonitor"
-            }
+                "DiskMonitorServiceProvider"
+            ]
+
         }
     },
     "minimum-stability": "dev",

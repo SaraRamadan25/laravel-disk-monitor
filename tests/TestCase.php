@@ -4,7 +4,7 @@ namespace Spatie\LaravelDiskMonitor\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\LaravelDiskMonitor\LaravelDiskMonitorServiceProvider;
+use Spatie\LaravelDiskMonitor\DiskMonitorServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -20,17 +20,21 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            LaravelDiskMonitorServiceProvider::class,
+            DiskMonitorServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
+        include_once __DIR__.'/../database/migrations/create_disk_monitor_tables.php.stub';
+        (new \CreateDiskMonitorTables())->up();
 
-
-        $migration = include __DIR__.'/../database/migrations/create_laravel-disk-monitor_table.php.stub';
-        $migration->up();
 
     }
 }
