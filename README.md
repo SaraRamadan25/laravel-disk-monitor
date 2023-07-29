@@ -8,6 +8,7 @@
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Support us
+## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-disk-monitor.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-disk-monitor)
 
